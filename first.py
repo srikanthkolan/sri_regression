@@ -188,6 +188,36 @@ class regressionclass(unittest.TestCase):
         driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/footer/button").click()
          #<Result 5:train times are displayed>>
 
+    def test_gw_ba_ticket_nextday2(self):
+
+        driver =self.driver
+        driver.maximize_window()
+
+        #<Step 1: open the page >
+        driver.get("https://gatwick.ba.stage.otrl.io")
+        #<Result 1:  page is opened >
+
+        #<Step 2: Login page >
+        driver.find_element_by_xpath("//*[@id='container']/div/div/header/nav[2]/ul/li[2]/button[1]").click()
+        driver.find_element_by_xpath("//*[@id='username']").send_keys("srikanth.kolan@ontrackretail.co.uk")
+        driver.find_element_by_xpath("//*[@id='password']").send_keys("Londonbridge")
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        #<Result 2: logged in succesfully >
+        time.sleep(2)
+
+        #<Step 3:Journey Selection Gatwick to victoria>
+        driver.find_element_by_xpath("//*[@id='journey']/option[2]").click()
+        time.sleep(2)
+        #<Result 3:Journey selected>
+
+        #<Step 4: outbond journey >
+        driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[1]/section[2]/div/div[1]/div/div[1]/button[2]").click()
+        #<Result 4:outbond journey selected>
+
+        #<Step 5: click on find train button>
+        driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/footer/button").click()
+        #<Result 5:train times are displayed>>
 
 
 
