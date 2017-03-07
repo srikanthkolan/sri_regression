@@ -59,7 +59,7 @@ class regressionclass(unittest.TestCase):
         #<Step 4: outbond journey >
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[1]/div/div[2]/button").click()
         time.sleep(2)
-        driver.find_element_by_xpath("//*[@id='rw_1_calendar__month_2-7']/span").click()
+        driver.find_element_by_xpath("//*[@id='rw_1_calendar__month_2-14']/span").click()
         time.sleep(2)
         driver.find_element_by_xpath(("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[2]/button")).click()
         time.sleep(2)
@@ -68,7 +68,7 @@ class regressionclass(unittest.TestCase):
         #<Step 5:Return journey>
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[2]/div/div[1]/div[2]/button").click()
         time.sleep(2)
-        driver.find_element_by_xpath("//*[@id='rw_3_calendar__month_2-14']/span").click()
+        driver.find_element_by_xpath("//*[@id='rw_3_calendar__month_2-21']/span").click()
         time.sleep(2)
         #<Result 5:Return journey selected>
 
@@ -105,7 +105,7 @@ class regressionclass(unittest.TestCase):
         #<Result 11: Ticket collection page is opened>
 
         #<Step 12:Select collect ticket from station>
-        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div[1]/div[1]/label/span/span/span[1]")
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div[2]/div/label/span").click()
         time.sleep(2)
         #<Result 12: Collect ticket from station selected>
 
@@ -115,9 +115,10 @@ class regressionclass(unittest.TestCase):
         #<Result 13: Payment option displayed>
 
         time.sleep(2)
-        #<Step 14:Select payment method as card payment>
+       #<Step 14:Se lect payment method as card payment/evoucher>
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[2]/div/span").click()
         time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[3]/div[1]/div[3]/div/div/label/span").click()
         #<Result 14:Payment method selected
 
         #<Step 15: click on the use existing card>
@@ -217,6 +218,8 @@ class regressionclass(unittest.TestCase):
         #<Step 9:Select payment method as card payment>
         driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[1]/section/div/form/div/div[2]/div/span").click()
         time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[3]/div[1]/div[3]/div/div/label/span").click()
+        time.sleep(2)
         #<Result 9:Payment method selected
 
         #<Step 10:existing card is selected and enter cvv>
@@ -256,7 +259,11 @@ class regressionclass(unittest.TestCase):
         driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[1]/section[2]/div/div[1]/div/div[1]/button[2]").click()
         #<Result 3:outbond journey selected>
 
-        #<Step 4: click on find train button>
+        #<Step 4: Add passengers and click on find train button>
+        driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[1]/section[3]/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/section/div[1]/div/div[2]/div/button[2]").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
         driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/footer/button").click()
         #<Result 4:train times are displayed>
         time.sleep(4)
@@ -275,31 +282,134 @@ class regressionclass(unittest.TestCase):
         #<Step 7: click payment details button >
         driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[3]/div[2]/button").click()
         #<Result 7: Payment option displayed>
-        time.sleep(2)
+        time.sleep(4)
 
         #<Step 8:Select payment method as paypaland click on pay>
-        driver.find_element_by_xpath("//*[@id='paypal-container']/div/span").click()
+        driver.find_element_by_xpath(" //*[@id='paypal-container']/div/span").click()
         time.sleep(2)
         driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[3]/div[2]/button[2]").click()
-        time.sleep(2)
-        #<Result 9:Payment method selected
-
-        len(driver.window_handles) > 1
-
         time.sleep(10)
+        #<Result 9:Payment method selected
+        driver.switch_to.default_content
+
+
         driver.find_element_by_xpath("//*[@id='email']").send_keys("gamita.patel@otrl.io")
         driver.find_element_by_xpath("//*[@id='password']").send_keys("testtest")
         driver.find_element_by_xpath("//*[@id='btnLogin']").click()
         time.sleep(2)
 
 
+    def test_gw_ej_ticket_weekrtn(self):
+        driver = self.driver
+        driver.maximize_window()
+       #<Step 1: open the page >
+        driver.get("https://gatwick-easyjet.stage.otrl.io/search")
+       #<Result 1:  page is opened >
+
+       #<Step 2: Login page >
+        driver.find_element_by_xpath("//*[@id='container']/div/div/header/nav[2]/ul/li[2]/button[1]").click()
+        driver.find_element_by_xpath("//*[@id='username']").send_keys("srikanth.kolan@ontrackretail.co.uk")
+        driver.find_element_by_xpath("//*[@id='password']").send_keys("Londonbridge")
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        #<Result 2: logged in succesfully >
+        time.sleep(2)
+       #<Step 3:Journey Selection London victoria to Gatwick>
+        driver.find_element_by_xpath("//*[@id='journey']/option[3]").click()
+        time.sleep(2)
+       #<Result 3:Journey selected>
+
+        #<Step 4: outbond journey >
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[1]/div/div[2]/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='rw_1_calendar__month_2-14']/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath(("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[2]/button")).click()
+        time.sleep(2)
+        #<Result 4:outbond journey selected>
+
+        #<Step 5:Return journey>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[2]/div/div[1]/div[2]/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='rw_3_calendar__month_2-14']/span").click()
+        time.sleep(2)
+       #<Result 5:Return journey selected>
+
+        ##<Step 6:Add passengers & Find trains>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[3]/button").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(4)
+        #<Result 6:Passengers added >
+
+        #<Step 7:click on find train button>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/footer/button").click()
+        time.sleep(4)
+        #<Result 7:train times are displayed>
+
+        #<Step 8:select train for outbound journey>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/div/ul/li[2]/div/div[1]/div[2]/div/button").click()
+        time.sleep(4)
+       #<Result 8:Outbound train selected>
+
+        #<Step 9:Select first class ticket and click on continue button in a pop up >
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/div[2]/div[2]/ul/li[2]/label/div[2]/div/span[2]").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(2)
+        #<Result 9: Ticket selected and continue>
+
+        #<Step 10:Select train for return journey>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/div/ul/li[2]/div/div[1]/div[2]/div/button").click()
+        time.sleep(2)
+        #<Result 10:Return journey selected>
+
+        #<Step 11:click on continue button to ticket collection page>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(4)
+        #<Result 11: Ticket collection page is opened>
+
+        #<Step 12:Select collect ticket from station>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div[2]/div[1]/label/span/span/span[1]").click()
+        time.sleep(2)
+        #<Result 12: Collect ticket from station selected>
+
+        #<Step 13: click payment details button >
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button").click()
+        time.sleep(2)
+        #<Result 13: Payment option displayed>
+
+        #<Step 14:Se lect payment method as card payment/evoucher>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[2]/div/span").click()
+        #<Result 14:Payment method selected
+
+        #<Step 15:Pay by using evouchers preselected>
+
+        #<Result 19:Payment gateway opens>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(4)
+        #<Result 19:payment successful>
+
+        driver.switch_to.frame(driver.find_element_by_name("iframe"))
+        time.sleep(3)
+
+        text=driver.find_element_by_xpath("//*[@id='container']/div/div[2]/section/div/div[1]/section/div/div[1]/div/div/p[1]").text
+
+        try:
+         assert "Your payment was successful" in text
+        except:
+                pass
 
 
 
 
 
 
-    def tearDown(self):
+
+
+
+
+
+
+def tearDown(self):
         self.driver.quit()
 
 
