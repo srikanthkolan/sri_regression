@@ -518,6 +518,7 @@ class regressionclass(unittest.TestCase):
         driver.find_element_by_xpath("//*[@id='container']/div/div/header/nav[2]/ul/li[2]/button[1]").click()
         driver.find_element_by_xpath("//*[@id='username']").send_keys("srikanth.kolan@ontrackretail.co.uk")
         driver.find_element_by_xpath("//*[@id='password']").send_keys("Londonbridge")
+        time.sleep(2)
         driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
         time.sleep(2)
         #<Result 2:Logged in succesfully>
@@ -525,20 +526,21 @@ class regressionclass(unittest.TestCase):
         #<Step 3:click on season tickets tab>
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/nav/a[2]").click()
         time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/label[2]/span").click()
+        time.sleep(2)
         #<Result 3: season ticket tab is open>
 
         #<Step 4:enter station details>
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[1]/label/div/input").send_keys("Deal")
         time.sleep(2)
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/input").send_keys("Hastings")
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/label[2]/span").click()
         #<Result 4: station details entered>
 
         #<Step 5:Select start date tomorrow>
         driver.find_element_by_xpath("//*[@id='loadDateSelect']").click()
-        time.sleep(2)
-        driver.find_element_by_xpath("//*[@id='rw_23_calendar__month_2-10']/span").click()
+        time.sleep(4)
         driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
         time.sleep(2)
         #<Result 5: date selected>
@@ -553,6 +555,190 @@ class regressionclass(unittest.TestCase):
         driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/footer/button").click()
         time.sleep(4)
         #<Result 7: Navigates to the ticket page>
+
+        #<Step 8:Select first class ticket and click on continue>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/div/ul/li[2]/label/div").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        #<Result 8: Ticket selected >
+
+        #<Step 9:Enter photo card details and continue>
+        driver.find_element_by_xpath("//*[@id='name']").send_keys("Smith qa")
+        driver.find_element_by_xpath("//*[@id='number']").send_keys("9865")
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(4)
+        #<Result 9:photo card details entered>
+
+        #<Step 10:collection preferences Tod>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button").click()
+        time.sleep(2)
+        #<Result 10:Tod selected >
+
+        #<Step 11:Payment details>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[2]/div/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[3]/div[1]/div[3]/div/div/label/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='cvv']").send_keys("123")
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(4)
+
+
+        driver.switch_to.frame(driver.find_element_by_name("iframe"))
+        time.sleep(3)
+        driver.find_element_by_xpath("//*[@id='submitForm']/div[1]/input[1]").click()
+        time.sleep(4)
+        text=driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/div[1]/div/div/p[1]").text
+        try:
+            assert "Your payment was successful" in text
+        except:
+            pass
+
+
+    def test_se_ticket_ev (self):
+        driver = self.driver
+        driver.maximize_window()
+        #<Step 1: open the page >
+        driver.get("https://southeastern.stage.otrl.io")
+        #<Result 1:  page is opened >
+
+        #<Step 2:Click on login>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/header/nav[2]/ul/li[2]/button[1]").click()
+        driver.find_element_by_xpath("//*[@id='username']").send_keys("srikanth.kolan@ontrackretail.co.uk")
+        driver.find_element_by_xpath("//*[@id='password']").send_keys("Londonbridge")
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(2)
+        #<Result 2:Logged in succesfully>
+
+        #<Step 3:click on tickets tab>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/nav/a[1]").click()
+        time.sleep(2)
+        #<Result 3:ticket tab is open>
+
+        #<Step 4:enter station details>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[1]/label/div/input").send_keys("Dover Priory")
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[1]/label/div/div").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/input").send_keys("Dartford")
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/div/ul/li[3]/label/div/div").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[1]/button").click()
+
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='via-avoid']/option[2]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/section/div/div[2]/span/label/div/input").send_keys("London Terminals")
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/section/div/div[2]/span/label/div/div").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(2)
+        #<Result 4: station details entered>
+
+        #<Step 5:Select journey next week off peak rtn same day off peak >
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[1]/div/div[2]/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='rw_1_calendar__month_2-16']/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='hours']/option[11]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='minutes']/option[3]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[2]/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[2]/div/div[2]/div/div[1]/div[1]/button[1]").click()
+        time.sleep(2)
+        #driver.find_element_by_xpath("//*[@id='hours']/option[20]").click()
+        #driver.find_element_by_xpath("//*[@id='minutes']/option[4]").click()
+        #<Result 5:Journey selected>
+
+        #<Step 6:Add passengers>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section[3]/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/section/div[1]/div/div[1]/div/button[2]").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/section/div[1]/div/div[1]/div/button[2]").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/section/div[1]/div/div[2]/div/button[2]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/footer/button").click()
+        time.sleep(2)
+        #<Result 6:Passengers added>
+
+        #<Step 7:Choose outbound service>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/div/ul/li[2]/div/div[1]/div[2]/div/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(2)
+        #<Result 7:Outbound service selected>
+
+        #<Step 8:Choose a return service>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/div/div/ul/li[3]/div/div[1]/div[2]/div/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(4)
+        #<Result 8:Return service selected>
+
+        #<Step 9:Buy plus bus>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/button").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/div[1]/div/div/section/div[1]/div/label/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[2]/div[1]/div/div/section/div[2]/div/label/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div/div[3]/div/button[2]").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(2)
+        #<Result 9:Plus bus selected>
+
+        #<Step 10:Select collect from station>
+        driver.find_element_by_xpath("//*[@id='stationselect']/option[236]").is_selected()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button").click()
+        time.sleep(2)
+        #<Result 10:Station selected>
+
+        #<Step 11:Select Evoucher as payment method>
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/form/div/div[2]/div/span").click()
+        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[3]/div[2]/button[2]").click()
+        time.sleep(4)
+
+        text=driver.find_element_by_xpath("//*[@id='container']/div/div/section/div/div[1]/section/div/div[1]/div/div/p[1]").text
+        try:
+            assert "Your payment was successful" in text
+        except:
+            pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
